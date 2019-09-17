@@ -1,21 +1,51 @@
 import React from "react"
-import { Link } from "gatsby"
-
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
+import Editor from "../components/Markdown/editor"
+import Previewer from "../components/Markdown/previewer"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const placeholder = `## Welcome to my React Markdown Previewer!
+### This is a sub-heading...
+#### And here's some other cool stuff:
+  
+Heres some code, \`<div></div>\`, between 2 backticks.
+
+\`\`\`
+// this is multi-line code:
+
+function greetMe(name) {
+  return 'Hello ' + name;
+}
+\`\`\`
+[Google](https://www.google.com)
+`;
+
+class IndexPage extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      input: placeholder,
+      output: '',
+    }
+  }
+
+  updateInput = (newInput) => {
+    this.setState({
+      input: newInput
+    })
+  }
+
+  render() {
+    return (
+      <Layout>
+      <SEO title="Home" />
+      <div className="container" style={{display: 'flex'}}>
+        <Editor editorValue={this.state.input} parentCallback={this.updateInput} />
+        <Previewer input={this.state.input}/>
+      </div>
+      </Layout>
+    )
+  }
+}
 
 export default IndexPage
