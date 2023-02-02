@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Manas Khatua",
   "dependencies": {
-    "gatsby": "^2.15.15",
+    "gatsby": "^5.5.0",
     "gatsby-plugin-manifest": "^2.2.16",
     "gatsby-plugin-offline": "^2.2.10",
     "gatsby-plugin-react-helmet": "^3.1.7",
